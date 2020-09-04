@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/gauravmehta13/ReCon./master/github%20logo.png?token=AMMWUTFGB232RAVNQ3WVUQS7LN46O" alt="Logo"  />
+  <img src="https://raw.githubusercontent.com/gauravmehta13/ReCon./master/github%20logo.png?token=AMMWUTFGB232RAVNQ3WVUQS7LN46O" alt="Logo"width="150" height="150"  />
 </p>
 <h1 align="center">ReCon.</h1>
 <p align="center">
