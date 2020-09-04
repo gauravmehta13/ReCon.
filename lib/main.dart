@@ -23,9 +23,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
           scaffoldBackgroundColor: Colors.white,
         ),
-        initialRoute: "/",
+        initialRoute: '/splash',
         routes: <String, WidgetBuilder>{
-          '/': (BuildContext context) => SplashScreen(),
+          '/splash': (BuildContext context) => splash(),
           '/login': (BuildContext context) => new LoginPage(),
           '/signup': (BuildContext context) => new SignupPage(),
           '/AskIp': (BuildContext context) => new IpAddress(),
