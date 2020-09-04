@@ -1,12 +1,12 @@
-import 'package:RMM/Screens/signup.dart';
+import 'package:RMM/startup/Login%20Page.dart';
+import 'package:RMM/startup/Signup%20Page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'Screens/Ask Ip.dart';
+import 'startup/Ask Ip.dart';
 import 'Screens/Dashboard.dart';
-import 'Screens/Disclaimer.dart';
-import 'Screens/Docker_help.dart';
-import 'Screens/Splash Screen.dart';
+import 'startup/Disclaimer.dart';
+import 'Screens/Docker help.dart';
+import 'startup/SplashScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         ),
         home: SplashScreen(),
         routes: <String, WidgetBuilder>{
+          '/login': (BuildContext context) => new LoginPage(),
           '/signup': (BuildContext context) => new SignupPage(),
           '/AskIp': (BuildContext context) => new IpAddress(),
           '/Disclaimer': (BuildContext context) => new Disclaimer(),

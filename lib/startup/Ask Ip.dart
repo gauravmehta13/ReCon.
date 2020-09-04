@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Dashboard.dart';
+import '../Screens/Dashboard.dart';
 
 class IpAddress extends StatefulWidget {
   @override

@@ -2,20 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _LoginPageState createState() => _LoginPageState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    Timer(Duration(seconds: 500), () {
-      Navigator.pushNamed(context, '/Disclaimer');
-    });
-  }
-
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,8 +82,8 @@ class _SplashScreenState extends State<SplashScreen> {
                     height: 40.0,
                     child: Material(
                       borderRadius: BorderRadius.circular(20.0),
-                      shadowColor: Colors.black,
-                      color: Colors.black,
+                      shadowColor: Colors.greenAccent,
+                      color: Colors.green,
                       elevation: 7.0,
                       child: GestureDetector(
                         onTap: () {},
@@ -108,34 +100,76 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                   SizedBox(height: 20.0),
-                  Container(
-                    height: 40.0,
-                    color: Colors.transparent,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Colors.black,
-                              style: BorderStyle.solid,
-                              width: 1.0),
-                          color: Colors.transparent,
-                          borderRadius: BorderRadius.circular(20.0)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Center(
-                            child: ImageIcon(AssetImage('assets/facebook.png')),
+                  Row(
+                    children: [
+                      Spacer(),
+                      Container(
+                        height: 40.0,
+                        color: Colors.transparent,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,
+                                  style: BorderStyle.solid,
+                                  width: 1.0),
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(20.0)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              SizedBox(width: 20.0),
+                              Center(
+                                child:
+                                    ImageIcon(AssetImage('assets/google.png')),
+                              ),
+                              SizedBox(width: 10.0),
+                              Center(
+                                child: Text('Google',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Montserrat')),
+                              ),
+                              SizedBox(width: 20.0),
+                            ],
                           ),
-                          SizedBox(width: 10.0),
-                          Center(
-                            child: Text('Log in with facebook',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Montserrat')),
-                          )
-                        ],
+                        ),
                       ),
-                    ),
-                  )
+                      Spacer(
+                        flex: 2,
+                      ),
+                      Container(
+                        height: 40.0,
+                        color: Colors.transparent,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.black,
+                                  style: BorderStyle.solid,
+                                  width: 1.0),
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(20.0)),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              SizedBox(width: 20.0),
+                              Center(
+                                child: ImageIcon(AssetImage('assets/fb.png')),
+                              ),
+                              SizedBox(width: 10.0),
+                              Center(
+                                child: Text('facebook',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontFamily: 'Montserrat')),
+                              ),
+                              SizedBox(width: 20.0),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Spacer(),
+                    ],
+                  ),
                 ],
               )),
           SizedBox(height: 15.0),
@@ -154,7 +188,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Text(
                   'Register',
                   style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.green,
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.bold,
                       decoration: TextDecoration.underline),
