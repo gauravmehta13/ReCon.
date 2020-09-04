@@ -5,6 +5,7 @@ import 'Screens/Ask Ip.dart';
 import 'Screens/Dashboard.dart';
 import 'Screens/Disclaimer.dart';
 import 'Screens/Docker_help.dart';
+import 'Screens/login Screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,8 +21,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
           scaffoldBackgroundColor: Colors.white,
         ),
-        home: Disclaimer(),
+        home: LoginScreen(),
         routes: <String, WidgetBuilder>{
+          '/AskIp': (BuildContext context) => new IpAddress(),
+          '/Disclaimer': (BuildContext context) => new Disclaimer(),
           '/Dashboard': (BuildContext context) => new Dashboard(),
           '/docker_help': (BuildContext context) => new Docker_help(),
           '/IpAddress': (BuildContext context) => new IpAddress(),
