@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
+import 'Screens/Dashboard.dart';
 import 'Screens/Docker.dart';
 import 'Screens/Help.dart';
 
@@ -12,7 +12,7 @@ class DrawerList extends StatelessWidget {
       children: <Widget>[
         UserAccountsDrawerHeader(
           accountEmail: new Text(
-            "Team Nerv",
+            "Gaurav",
             style: TextStyle(color: Colors.black),
           ),
           accountName: new Text(
@@ -34,17 +34,14 @@ class DrawerList extends StatelessWidget {
           ),
           decoration: new BoxDecoration(
               image: new DecorationImage(
-                  image: new NetworkImage(
-                      "https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
-                  fit: BoxFit.fill)),
+                  image: AssetImage('assets/recon.gif'), fit: BoxFit.contain)),
         ),
         ListTile(
             title: new Text("Basic Commands"),
             trailing: new Icon(Icons.code),
             onTap: () {
-              Navigator.of(context).pop();
-              //Navigator.of(context).push(new MaterialPageRoute(
-              //  builder: (BuildContext context) => Dashboard()));
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => Dashboard()));
             }),
         new ListTile(
             title: new Text("Docker"),
