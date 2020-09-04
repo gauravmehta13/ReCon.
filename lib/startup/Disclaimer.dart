@@ -29,9 +29,11 @@ class _DisclaimerState extends State<Disclaimer> {
               height: 20,
             ),
             Text(
-              'This App Needs to be Setup First otherwise It will not work Properly, Please Read the Setup Instructions first',
-              textAlign: TextAlign.center,
-            ),
+                'This App Needs to be Setup First otherwise It will not work Properly, Please Read the Setup Instructions first',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: 'Montserrat',
+                )),
             SizedBox(
               height: 20,
             ),
@@ -70,7 +72,10 @@ class _DisclaimerState extends State<Disclaimer> {
                   width: MediaQuery.of(context).size.width - 110,
                   child: Text(
                     'Proceed Only if you have read setup instructions carefully and understood it.',
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontFamily: 'Montserrat',
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ),

@@ -23,7 +23,10 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: Text('RemoteManagementApp'),
+        title: Text(
+          'ReCon',
+          style: TextStyle(fontFamily: 'Montserrat', fontSize: 30),
+        ),
         centerTitle: true,
       ),
       drawer: DrawerList(),
@@ -58,19 +61,37 @@ class _DashboardState extends State<Dashboard> {
             SizedBox(
               height: 20,
             ),
-            RaisedButton(
-              child: Text('Execute'),
-              onPressed: () async {
-                var url =
-                    "http://http://100.26.11.6//cgi-bin/rmm.py?x=$commandName";
-                var result = await http.get(url);
-                var data = result.body;
-                setState(() {
-                  msgLine = "Output of the $commandName comamnd is: ";
-                  op = data;
-                });
-                print(data);
-              },
+            Container(
+              width: MediaQuery.of(context).size.width / 2,
+              height: 40.0,
+              child: Material(
+                borderRadius: BorderRadius.circular(20.0),
+                shadowColor: Colors.greenAccent,
+                color: Colors.green,
+                elevation: 7.0,
+                child: GestureDetector(
+                  onTap: () async {
+                    var url =
+                        "http://http://100.26.11.6//cgi-bin/rmm.py?x=$commandName";
+                    var result = await http.get(url);
+                    var data = result.body;
+                    setState(() {
+                      msgLine = "Output of the $commandName comamnd is: ";
+                      op = data;
+                    });
+                    print(data);
+                  },
+                  child: Center(
+                    child: Text(
+                      'Execute',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Montserrat'),
+                    ),
+                  ),
+                ),
+              ),
             ),
             SizedBox(
               height: 40,
