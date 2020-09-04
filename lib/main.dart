@@ -1,3 +1,4 @@
+import 'package:RMM/Startup/Splash%20Screen.dart';
 import 'package:RMM/startup/Login%20Page.dart';
 import 'package:RMM/startup/Signup%20Page.dart';
 import 'package:RMM/startup/Splash%20Screen.dart';
@@ -22,8 +23,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
           scaffoldBackgroundColor: Colors.white,
         ),
-        home: SplashScreen(),
+        initialRoute: "/",
         routes: <String, WidgetBuilder>{
+          '/': (BuildContext context) => SplashScreen(),
           '/login': (BuildContext context) => new LoginPage(),
           '/signup': (BuildContext context) => new SignupPage(),
           '/AskIp': (BuildContext context) => new IpAddress(),

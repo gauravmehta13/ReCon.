@@ -79,15 +79,15 @@ class _SignupPageState extends State<SignupPage> {
                                   borderSide: BorderSide(color: Colors.green))),
                         ),
                         SizedBox(height: 50.0),
-                        Container(
-                            height: 40.0,
-                            child: Material(
-                              borderRadius: BorderRadius.circular(20.0),
-                              shadowColor: Colors.greenAccent,
-                              color: Colors.green,
-                              elevation: 7.0,
-                              child: GestureDetector(
-                                onTap: () {},
+                        GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              height: 40.0,
+                              child: Material(
+                                borderRadius: BorderRadius.circular(20.0),
+                                shadowColor: Colors.greenAccent,
+                                color: Colors.green,
+                                elevation: 7.0,
                                 child: Center(
                                   child: Text(
                                     'SIGNUP',

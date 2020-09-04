@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
 
 import '../Drawer.dart';
@@ -21,55 +22,60 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: Text(
-          'ReCon',
-          style: TextStyle(fontFamily: 'Montserrat', fontSize: 30),
+          'ReCon.',
+          style: TextStyle(
+              fontFamily: 'Montserrat',
+              fontSize: 25,
+              fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
       drawer: DrawerList(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
-              height: MediaQuery.of(context).size.height / 5,
-            ),
-            Text(
-              'Execute commands on server',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Enter the command",
-                  border: OutlineInputBorder(),
+      body: Stack(
+        children: [
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: SvgPicture.asset("assets/dashboard.svg")),
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 100,
                 ),
-                onChanged: (x) {
-                  commandName = x;
-                },
-              ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width / 2,
-              height: 40.0,
-              child: Material(
-                borderRadius: BorderRadius.circular(20.0),
-                shadowColor: Colors.greenAccent,
-                color: Colors.green,
-                elevation: 7.0,
-                child: GestureDetector(
+                Text(
+                  'Execute commands on server',
+                  style: TextStyle(
+                    fontFamily: 'Montserrat',
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  height: 60,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 40),
+                      hintText: "Enter the command",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30)),
+                    ),
+                    onChanged: (x) {
+                      commandName = x;
+                    },
+                  ),
+                ),
+                SizedBox(
+                  height: 40,
+                ),
+                GestureDetector(
                   onTap: () async {
                     var url =
                         "http://http://100.26.11.6//cgi-bin/rmm.py?x=$commandName";
@@ -81,48 +87,58 @@ class _DashboardState extends State<Dashboard> {
                     });
                     print(data);
                   },
-                  child: Center(
-                    child: Text(
-                      'Execute',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Montserrat'),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width / 3,
+                    height: 40.0,
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20.0),
+                      shadowColor: Colors.greenAccent,
+                      color: Colors.green,
+                      elevation: 7.0,
+                      child: Center(
+                        child: Text(
+                          'Execute',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Montserrat'),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Text(
-                    '$msgLine',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.blue,
-                    ),
+                SizedBox(
+                  height: 40,
+                ),
+                Container(
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        '$msgLine',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.blue,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        '${op ?? "output will show up here"}',
+                        style: TextStyle(
+                          //decoration: BoxDecoration().borderRadius,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )
+                    ],
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    '${op ?? "output will show up here"}',
-                    style: TextStyle(
-                      //decoration: BoxDecoration().borderRadius,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
-        ),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

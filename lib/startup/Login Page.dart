@@ -78,17 +78,17 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height: 40.0),
-                  Container(
-                    height: 40.0,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(20.0),
-                      shadowColor: Colors.greenAccent,
-                      color: Colors.green,
-                      elevation: 7.0,
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/Disclaimer');
-                        },
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/Disclaimer');
+                    },
+                    child: Container(
+                      height: 40.0,
+                      child: Material(
+                        borderRadius: BorderRadius.circular(20.0),
+                        shadowColor: Colors.greenAccent,
+                        color: Colors.green,
+                        elevation: 7.0,
                         child: Center(
                           child: Text(
                             'LOGIN',
