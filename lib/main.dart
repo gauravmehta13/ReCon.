@@ -1,7 +1,6 @@
-import 'package:RMM/Startup/Splash%20Screen.dart';
-import 'package:RMM/startup/Login%20Page.dart';
-import 'package:RMM/startup/Signup%20Page.dart';
-import 'package:RMM/startup/Splash%20Screen.dart';
+import 'package:RMM/Startup/Splash Screen.dart';
+import 'package:RMM/startup/Login Page.dart';
+import 'package:RMM/startup/Signup Page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'startup/Ask Ip.dart';

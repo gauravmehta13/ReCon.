@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+// ignore: camel_case_types
 class splash extends StatefulWidget {
   @override
   _splashState createState() => _splashState();
@@ -10,7 +11,7 @@ class _splashState extends State<splash> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, '/login');
     });
   }
