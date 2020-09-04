@@ -1,3 +1,4 @@
+import 'package:RMM/Screens/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -5,7 +6,7 @@ import 'Screens/Ask Ip.dart';
 import 'Screens/Dashboard.dart';
 import 'Screens/Disclaimer.dart';
 import 'Screens/Docker_help.dart';
-import 'Screens/login Screen.dart';
+import 'Screens/Splash Screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,8 +22,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
           scaffoldBackgroundColor: Colors.white,
         ),
-        home: LoginScreen(),
+        home: SplashScreen(),
         routes: <String, WidgetBuilder>{
+          '/signup': (BuildContext context) => new SignupPage(),
           '/AskIp': (BuildContext context) => new IpAddress(),
           '/Disclaimer': (BuildContext context) => new Disclaimer(),
           '/Dashboard': (BuildContext context) => new Dashboard(),
