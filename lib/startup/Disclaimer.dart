@@ -11,7 +11,7 @@ class _DisclaimerState extends State<Disclaimer> {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(30),
-        color: Colors.grey[400],
+        color: Color(0xFFf2f0f2),
         height: MediaQuery.of(context).size.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -19,7 +19,10 @@ class _DisclaimerState extends State<Disclaimer> {
             Text(
               'NOTICE',
               style: TextStyle(
-                  color: Colors.red, fontWeight: FontWeight.w500, fontSize: 20),
+                fontSize: 30.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
             ),
             SizedBox(
               height: 20,

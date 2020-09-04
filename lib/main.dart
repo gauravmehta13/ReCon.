@@ -1,12 +1,12 @@
 import 'package:RMM/startup/Login%20Page.dart';
 import 'package:RMM/startup/Signup%20Page.dart';
+import 'package:RMM/startup/Splash%20Screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'startup/Ask Ip.dart';
 import 'Screens/Dashboard.dart';
 import 'startup/Disclaimer.dart';
 import 'Screens/Docker help.dart';
-import 'startup/SplashScreen.dart';
 
 void main() => runApp(MyApp());
 
