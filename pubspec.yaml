@@ -52,6 +52,7 @@ flutter:
    - assets/fb.png
    - assets/google.png
    - assets/recon.gif
+   - assets/drawer.png
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

@@ -34,7 +34,8 @@ class DrawerList extends StatelessWidget {
           ),
           decoration: new BoxDecoration(
               image: new DecorationImage(
-                  image: AssetImage('assets/recon.gif'), fit: BoxFit.contain)),
+                  image: AssetImage('assets/drawer.png'),
+                  fit: BoxFit.fitWidth)),
         ),
         ListTile(
             title: new Text("Basic Commands"),
