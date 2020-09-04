@@ -14,34 +14,57 @@ class _IpAddressState extends State<IpAddress> {
     return Scaffold(
       body: Container(
           padding: EdgeInsets.all(30),
-          color: Colors.grey[400],
+          color: Color(0xFFf2f0f2),
           height: MediaQuery.of(context).size.height,
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 TextField(
-                  decoration: InputDecoration(
-                    hintText: "Enter the Public IP of your VM",
-                    border: OutlineInputBorder(),
-                  ),
                   onChanged: (x) {
                     ipaddr = x;
                   },
+                  decoration: InputDecoration(
+                      labelText: 'Enter the Public IP of your VM',
+                      labelStyle: TextStyle(
+                          fontFamily: 'Montserrat',
+                          //  fontWeight: FontWeight.bold,
+                          color: Colors.grey),
+                      focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.black))),
+                  obscureText: true,
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 40,
                 ),
-                RaisedButton(
-                  child: Text('Abi ip wala add ni kia h just click next'),
-                  onPressed: () {
-                    print(ipaddr);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Dashboard(
-                                  ipaddr: ipaddr,
-                                )));
-                  },
+                Container(
+                  width: MediaQuery.of(context).size.width / 2,
+                  height: 40.0,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20.0),
+                    shadowColor: Colors.greenAccent,
+                    color: Colors.green,
+                    elevation: 7.0,
+                    child: GestureDetector(
+                      onTap: () {
+                        print(ipaddr);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Dashboard(
+                                      ipaddr: ipaddr,
+                                    )));
+                      },
+                      child: Center(
+                        child: Text(
+                          'Next',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Montserrat'),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ])),
     );

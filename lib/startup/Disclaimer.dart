@@ -19,6 +19,7 @@ class _DisclaimerState extends State<Disclaimer> {
             Text(
               'NOTICE',
               style: TextStyle(
+                fontFamily: 'Montserrat',
                 fontSize: 30.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.red,
@@ -34,9 +35,27 @@ class _DisclaimerState extends State<Disclaimer> {
             SizedBox(
               height: 20,
             ),
-            RaisedButton(
-              onPressed: () {},
-              child: Text('Setup Instructions'),
+            Container(
+              width: MediaQuery.of(context).size.width / 2,
+              height: 40.0,
+              child: Material(
+                borderRadius: BorderRadius.circular(20.0),
+                shadowColor: Colors.greenAccent,
+                color: Colors.green,
+                elevation: 7.0,
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Center(
+                    child: Text(
+                      'Setup Instructions',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Montserrat'),
+                    ),
+                  ),
+                ),
+              ),
             ),
             SizedBox(
               height: 30,
@@ -60,12 +79,30 @@ class _DisclaimerState extends State<Disclaimer> {
             SizedBox(
               height: 20,
             ),
-            RaisedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/IpAddress');
-              },
-              child: Text('Next'),
-            )
+            Container(
+              width: MediaQuery.of(context).size.width / 2,
+              height: 40.0,
+              child: Material(
+                borderRadius: BorderRadius.circular(20.0),
+                shadowColor: Colors.greenAccent,
+                color: Colors.green,
+                elevation: 7.0,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/IpAddress');
+                  },
+                  child: Center(
+                    child: Text(
+                      'Next',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Montserrat'),
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),

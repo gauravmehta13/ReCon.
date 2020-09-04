@@ -86,7 +86,9 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.green,
                       elevation: 7.0,
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, '/Disclaimer');
+                        },
                         child: Center(
                           child: Text(
                             'LOGIN',
