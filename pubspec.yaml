@@ -19,10 +19,12 @@ dependencies:
   google_sign_in: null
   firebase_core: null
   url_launcher:
+  flutter_automation:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 flutter:
   uses-material-design: true
