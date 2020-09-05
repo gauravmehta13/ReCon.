@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -13,7 +15,6 @@ class _DisclaimerState extends State<Disclaimer> {
         rememberMe = newValue;
 
         if (rememberMe) {
-          // TODO: Here goes your functionality that remembers the user.
         } else {
           // TODO: Forget the user
         }
