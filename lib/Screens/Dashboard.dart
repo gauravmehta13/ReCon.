@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:http/http.dart' as http;
-
 import '../Drawer.dart';
 
 // ignore: must_be_immutable
@@ -77,8 +76,7 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 GestureDetector(
                   onTap: () async {
-                    var url =
-                        "http://http://100.26.11.6//cgi-bin/rmm.py?x=$commandName";
+                    var url = "http://54.160.88.233/cgi-bin/rmm.py?x=date";
                     var result = await http.get(url);
                     var data = result.body;
                     setState(() {

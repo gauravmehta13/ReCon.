@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
           scaffoldBackgroundColor: Colors.white,
         ),
-        initialRoute: '/splash',
+        initialRoute: '/Dashboard',
         routes: <String, WidgetBuilder>{
           '/splash': (BuildContext context) => splash(),
           '/login': (BuildContext context) => new LoginPage(),
