@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
@@ -12,7 +13,11 @@ class _splashState extends State<splash> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(context, '/login');
+      if (User != null) {
+        Navigator.pushReplacementNamed(context, '/Disclaimer');
+      } else {
+        Navigator.pushReplacementNamed(context, '/login');
+      }
     });
   }
 

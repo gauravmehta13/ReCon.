@@ -1,5 +1,8 @@
+import 'package:RMM/Startup/Login%20Page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'Screens/Dashboard.dart';
 import 'Screens/Docker.dart';
 import 'Screens/Help.dart';
@@ -8,7 +11,7 @@ class DrawerList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        child: ListView(
+        child: Column(
       children: <Widget>[
         UserAccountsDrawerHeader(
           accountEmail: new Text(
@@ -37,6 +40,7 @@ class DrawerList extends StatelessWidget {
                   image: AssetImage('assets/drawer.png'),
                   fit: BoxFit.fitWidth)),
         ),
+        Divider(),
         ListTile(
             title: new Text("Basic Commands"),
             trailing: new Icon(Icons.code),
@@ -61,11 +65,15 @@ class DrawerList extends StatelessWidget {
                   builder: (BuildContext context) => Help()));
             }),
         new Divider(),
-        new ListTile(
-          title: new Text("Cancel"),
-          trailing: new Icon(Icons.cancel),
-          onTap: () => Navigator.pop(context),
-        ),
+        Expanded(
+            child: Align(
+          alignment: Alignment.bottomCenter,
+          child: ListTile(
+            title: new Text("Sign Out"),
+            leading: new Icon(Icons.cancel),
+            onTap: () {},
+          ),
+        )),
       ],
     ));
   }

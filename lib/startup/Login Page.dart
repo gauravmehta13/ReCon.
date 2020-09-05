@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -8,6 +10,38 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 0), () {});
+  }
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = new GoogleSignIn();
+
+  Future<User> _signIn() async {
+    GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    GoogleSignInAuthentication googleSignInAuthentication =
+        await googleSignInAccount.authentication;
+
+    final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+        idToken: googleSignInAuthentication.idToken,
+        accessToken: googleSignInAuthentication.accessToken);
+    final UserCredential authResult =
+        await _auth.signInWithCredential(credential);
+    final User user = authResult.user;
+
+    print('User Name : ${user.displayName}');
+    return user;
+  }
+
+  void _signOut() {
+    googleSignIn.signOut();
+    print('User Signed Out');
+  }
+
+  var email;
+  var password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +75,11 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: <Widget>[
                   TextField(
+                    onChanged: (x) {
+                      setState(() {
+                        email = x;
+                      });
+                    },
                     decoration: InputDecoration(
                         labelText: 'EMAIL',
                         labelStyle: TextStyle(
@@ -52,6 +91,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: 20.0),
                   TextField(
+                    onChanged: (y) {
+                      setState(() {
+                        password = y;
+                      });
+                    },
                     decoration: InputDecoration(
                         labelText: 'PASSWORD',
                         labelStyle: TextStyle(
@@ -80,7 +124,16 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(height: 40.0),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/Disclaimer');
+                      try {
+                        _auth.signInWithEmailAndPassword(
+                            email: email, password: password);
+                      } catch (e) {
+                        print(e);
+                      }
+
+                      print(email);
+                      print(password);
+                      // Navigator.pushNamed(context, '/Disclaimer');
                     },
                     child: Container(
                       height: 40.0,
@@ -102,75 +155,42 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   SizedBox(height: 20.0),
-                  Row(
-                    children: [
-                      Spacer(),
-                      Container(
-                        height: 40.0,
-                        color: Colors.transparent,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.black,
-                                  style: BorderStyle.solid,
-                                  width: 1.0),
-                              color: Colors.transparent,
-                              borderRadius: BorderRadius.circular(20.0)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              SizedBox(width: 20.0),
-                              Center(
-                                child:
-                                    ImageIcon(AssetImage('assets/google.png')),
-                              ),
-                              SizedBox(width: 10.0),
-                              Center(
-                                child: Text('Google',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Montserrat')),
-                              ),
-                              SizedBox(width: 20.0),
-                            ],
-                          ),
+                  GestureDetector(
+                    onTap: () {
+                      _signIn()
+                          .then((value) => (User user) => print(user))
+                          .catchError((e) => print(e));
+                    },
+                    child: Container(
+                      height: 40.0,
+                      color: Colors.transparent,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Colors.black,
+                                style: BorderStyle.solid,
+                                width: 1.0),
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(20.0)),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            SizedBox(width: 20.0),
+                            Center(
+                              child: ImageIcon(AssetImage('assets/google.png')),
+                            ),
+                            SizedBox(width: 10.0),
+                            Center(
+                              child: Text('Login With Google',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Montserrat')),
+                            ),
+                            SizedBox(width: 20.0),
+                          ],
                         ),
                       ),
-                      Spacer(
-                        flex: 2,
-                      ),
-                      Container(
-                        height: 40.0,
-                        color: Colors.transparent,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: Colors.black,
-                                  style: BorderStyle.solid,
-                                  width: 1.0),
-                              color: Colors.transparent,
-                              borderRadius: BorderRadius.circular(20.0)),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              SizedBox(width: 20.0),
-                              Center(
-                                child: ImageIcon(AssetImage('assets/fb.png')),
-                              ),
-                              SizedBox(width: 10.0),
-                              Center(
-                                child: Text('facebook',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: 'Montserrat')),
-                              ),
-                              SizedBox(width: 20.0),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Spacer(),
-                    ],
+                    ),
                   ),
                 ],
               )),

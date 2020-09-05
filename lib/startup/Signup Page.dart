@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatefulWidget {
@@ -6,6 +7,9 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  var authc = FirebaseAuth.instance;
+  var email;
+  var password;
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -44,19 +48,27 @@ class _SignupPageState extends State<SignupPage> {
                     child: Column(
                       children: <Widget>[
                         TextField(
+                          onChanged: (x) {
+                            setState(() {
+                              email = x;
+                            });
+                          },
                           decoration: InputDecoration(
                               labelText: 'EMAIL',
                               labelStyle: TextStyle(
                                   fontFamily: 'Montserrat',
                                   fontWeight: FontWeight.bold,
                                   color: Colors.grey),
-                              // hintText: 'EMAIL',
-                              // hintStyle: ,
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.green))),
                         ),
                         SizedBox(height: 10.0),
                         TextField(
+                          onChanged: (y) {
+                            setState(() {
+                              password = y;
+                            });
+                          },
                           decoration: InputDecoration(
                               labelText: 'PASSWORD ',
                               labelStyle: TextStyle(
@@ -80,7 +92,14 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         SizedBox(height: 50.0),
                         GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              try {
+                                authc.createUserWithEmailAndPassword(
+                                    email: email, password: password);
+                              } catch (e) {
+                                print(e);
+                              }
+                            },
                             child: Container(
                               height: 40.0,
                               child: Material(

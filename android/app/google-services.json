@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "289753593642",
+    "firebase_url": "https://recon-rmm.firebaseio.com",
+    "project_id": "recon-rmm",
+    "storage_bucket": "recon-rmm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289753593642:android:78735f1340f3019849d053",
+        "android_client_info": {
+          "package_name": "com.gauravmehta13.RMM"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "289753593642-900d09abuldof1kv83e1i6g6a08s937q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gauravmehta13.RMM",
+            "certificate_hash": "b0315a6a320ab02700bb66e4377aea5200e69127"
+          }
+        },
+        {
+          "client_id": "289753593642-n850g3sgp86a7cip1cio57j3nqibp2ks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKwUt78eUF2EhgKJIm-NjFPcb4QkmHPrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289753593642-n850g3sgp86a7cip1cio57j3nqibp2ks.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
