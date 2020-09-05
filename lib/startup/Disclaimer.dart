@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Disclaimer extends StatefulWidget {
   @override
@@ -55,7 +56,10 @@ class _DisclaimerState extends State<Disclaimer> {
                   height: 30,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    launch(
+                        'https://thesocialcomment.com/blog/Executing-Commands-on-Cloud-VM-s-Remotely-using-Recon-?pid=5f53803737add53a21ad536c');
+                  },
                   child: Container(
                     width: MediaQuery.of(context).size.width / 2,
                     height: 40.0,
