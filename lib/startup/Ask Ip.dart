@@ -40,7 +40,6 @@ class _IpAddressState extends State<IpAddress> {
                               color: Colors.grey[700]),
                           focusedBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.black))),
-                      obscureText: true,
                     ),
                     SizedBox(
                       height: 50,

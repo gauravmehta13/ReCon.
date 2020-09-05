@@ -12,12 +12,8 @@ class _splashState extends State<splash> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 3), () {
-      if (User != null) {
-        Navigator.pushReplacementNamed(context, '/Disclaimer');
-      } else {
-        Navigator.pushReplacementNamed(context, '/login');
-      }
+    Timer(Duration(seconds: 5), () {
+      Navigator.pushReplacementNamed(context, '/Disclaimer');
     });
   }
 

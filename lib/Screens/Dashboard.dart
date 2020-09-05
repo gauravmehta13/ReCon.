@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import '../Drawer.dart';
+import 'Output.dart';
 
 // ignore: must_be_immutable
 class Dashboard extends StatefulWidget {
@@ -32,6 +34,18 @@ class _DashboardState extends State<Dashboard> {
               fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.assignment),
+            onPressed: () => Navigator.of(context).push(
+              new MaterialPageRoute(
+                  builder: (BuildContext context) => Output(
+                        op: op,
+                        commandName: commandName,
+                      )),
+            ),
+          )
+        ],
       ),
       drawer: DrawerList(),
       body: Stack(
@@ -76,7 +90,7 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 GestureDetector(
                   onTap: () async {
-                    var url = "http://54.160.88.233/cgi-bin/rmm.py?x=date";
+                    var url = "http://$ipaddr/cgi-bin/rmm.py?x=$commandName";
                     var result = await http.get(url);
                     var data = result.body;
                     setState(() {
@@ -84,6 +98,13 @@ class _DashboardState extends State<Dashboard> {
                       op = data;
                     });
                     print(data);
+                    Fluttertoast.showToast(
+                      msg: data,
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      backgroundColor: Colors.green,
+                      textColor: Colors.white,
+                    );
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width / 3,
@@ -108,7 +129,7 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(
                   height: 40,
                 ),
-                Container(
+                /* Container(
                   child: Column(
                     children: <Widget>[
                       Text(
@@ -132,7 +153,7 @@ class _DashboardState extends State<Dashboard> {
                       )
                     ],
                   ),
-                )
+                )*/
               ],
             ),
           ),

@@ -7,6 +7,17 @@ class Disclaimer extends StatefulWidget {
 }
 
 class _DisclaimerState extends State<Disclaimer> {
+  bool rememberMe = false;
+
+  void _onRememberMeChanged(bool newValue) => setState(() {
+        rememberMe = newValue;
+
+        if (rememberMe) {
+          // TODO: Here goes your functionality that remembers the user.
+        } else {
+          // TODO: Forget the user
+        }
+      });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,9 +82,7 @@ class _DisclaimerState extends State<Disclaimer> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Checkbox(
-                      value: false,
-                      onChanged: null,
-                    ),
+                        value: rememberMe, onChanged: _onRememberMeChanged),
                     Container(
                       width: MediaQuery.of(context).size.width - 110,
                       child: Text(

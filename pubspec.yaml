@@ -36,6 +36,7 @@ flutter:
     - assets/recon.gif
     - assets/drawer.png
     - assets/textfield.svg
+    - github logo.png
 
   fonts:
     - family: Montserrat

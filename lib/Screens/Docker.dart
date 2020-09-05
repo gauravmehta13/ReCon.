@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 //import 'package:fluttertoast/fluttertoast.dart';
 
-import 'Docker Output.dart';
+import 'Output.dart';
 
 var imagename, tag, cName, cmd, nName, output;
 
@@ -81,7 +81,7 @@ class _DockerState extends State<Docker> {
             IconButton(
               icon: Icon(Icons.assignment),
               onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => Docker_Output())),
+                  builder: (BuildContext context) => Output())),
             ),
             IconButton(
               icon: Icon(Icons.help_outline),

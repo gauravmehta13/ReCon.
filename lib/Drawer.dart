@@ -14,7 +14,7 @@ class DrawerList extends StatelessWidget {
         child: Column(
       children: <Widget>[
         UserAccountsDrawerHeader(
-          accountEmail: new Text(
+          /* accountEmail: new Text(
             "Gaurav",
             style: TextStyle(color: Colors.black),
           ),
@@ -34,21 +34,19 @@ class DrawerList extends StatelessWidget {
                 backgroundColor: Colors.yellowAccent,
                 textColor: Colors.black,
                 fontSize: 16.0),
-          ),
+          ),*/
           decoration: new BoxDecoration(
               image: new DecorationImage(
-                  image: AssetImage('assets/drawer.png'),
-                  fit: BoxFit.fitWidth)),
+                  image: AssetImage('github logo.png'), fit: BoxFit.fitWidth)),
         ),
-        Divider(),
         ListTile(
-            title: new Text("Basic Commands"),
+            title: new Text("Execute Commands"),
             trailing: new Icon(Icons.code),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Dashboard()));
             }),
-        new ListTile(
+        /*new ListTile(
             title: new Text("Docker"),
             trailing: new Icon(Icons.cloud),
             onTap: () {
@@ -63,14 +61,14 @@ class DrawerList extends StatelessWidget {
               Navigator.of(context).pop();
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Help()));
-            }),
+            }),*/
         new Divider(),
         Expanded(
             child: Align(
           alignment: Alignment.bottomCenter,
           child: ListTile(
-            title: new Text("Sign Out"),
-            leading: new Icon(Icons.cancel),
+            title: new Text("Get Help"),
+            leading: new Icon(Icons.add_alert_rounded),
             onTap: () {},
           ),
         )),
