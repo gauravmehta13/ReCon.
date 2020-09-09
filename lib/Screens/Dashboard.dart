@@ -146,7 +146,7 @@ class _DashboardState extends State<Dashboard> {
                       Text(
                         '${op ?? "output will show up here"}',
                         style: TextStyle(
-                          //decoration: BoxDecoration().borderRadius,
+                          decoration: BoxDecoration().borderRadius,
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
                         ),

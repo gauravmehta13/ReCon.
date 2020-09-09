@@ -2,11 +2,13 @@ import 'package:RMM/Startup/Login%20Page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'Screens/Dashboard.dart';
 import 'Screens/Docker.dart';
 import 'Screens/Help.dart';
+import 'Screens/Terminal.dart';
 
 class DrawerList extends StatelessWidget {
   @override
@@ -47,15 +49,15 @@ class DrawerList extends StatelessWidget {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Dashboard()));
             }),
-        /*new ListTile(
-            title: new Text("Docker"),
-            trailing: new Icon(Icons.cloud),
+        new ListTile(
+            title: new Text("Terminal"),
+            trailing: FaIcon(FontAwesomeIcons.terminal),
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => Docker()));
+                  builder: (BuildContext context) => Terminal()));
             }),
-        new ListTile(
+        /*new ListTile(
             title: new Text("Get Help"),
             trailing: new Icon(Icons.help),
             onTap: () {
@@ -68,7 +70,7 @@ class DrawerList extends StatelessWidget {
             child: Align(
           alignment: Alignment.bottomCenter,
           child: ListTile(
-              title: new Text("Get Help"),
+              title: new Text("Setup"),
               leading: new Icon(Icons.add_alert_rounded),
               onTap: () {
                 launch(
