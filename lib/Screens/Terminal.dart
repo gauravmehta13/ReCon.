@@ -9,9 +9,11 @@ class Terminal extends StatefulWidget {
 class _TerminalState extends State<Terminal> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController _c;
     var op = " ";
     var msgLine = " ";
     String commandName = " ";
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF1e1e1e),
@@ -53,20 +55,25 @@ class _TerminalState extends State<Terminal> {
                             var data = result.body;
                             setState(() {
                               op = data;
+                              data = op;
                               print(op);
                             });
                           }),
                     )
                   ],
                 ),
-                Text(
-                  op,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w400,
+                /* Container(
+                  width: 500,
+                  color: Colors.black,
+                  child: Text(
+                    'cmd : $op',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                )
+                )*/
               ],
             ),
           ),

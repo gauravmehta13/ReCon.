@@ -44,26 +44,35 @@ class DrawerList extends StatelessWidget {
         ),
         ListTile(
             title: new Text("Execute Commands"),
-            trailing: new Icon(Icons.code),
+            leading: FaIcon(FontAwesomeIcons.terminal),
             onTap: () {
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Dashboard()));
             }),
         new ListTile(
             title: new Text("Terminal"),
-            trailing: FaIcon(FontAwesomeIcons.terminal),
+            leading: FaIcon(FontAwesomeIcons.terminal),
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => Terminal()));
             }),
-        /*new ListTile(
-            title: new Text("Get Help"),
-            trailing: new Icon(Icons.help),
+        Divider(),
+        new ListTile(
+            title: new Text("Docker"),
+            leading: FaIcon(FontAwesomeIcons.docker),
             onTap: () {
               Navigator.of(context).pop();
               Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => Help()));
+                  builder: (BuildContext context) => Docker()));
+            }),
+        /* new ListTile(
+            title: new Text("Kubernetes"),
+            leading: FaIcon(FontAwesomeIcons.docker),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => Docker()));
             }),*/
         new Divider(),
         Expanded(
@@ -71,7 +80,7 @@ class DrawerList extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: ListTile(
               title: new Text("Setup"),
-              leading: new Icon(Icons.add_alert_rounded),
+              leading: FaIcon(FontAwesomeIcons.handsHelping),
               onTap: () {
                 launch(
                     'https://thesocialcomment.com/blog/Executing-Commands-on-Cloud-VM-s-Remotely-using-Recon-?pid=5f53803737add53a21ad536c');
