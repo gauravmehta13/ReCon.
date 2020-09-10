@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Terminal extends StatefulWidget {
+  var ipaddr;
+  Terminal({this.ipaddr});
   @override
-  _TerminalState createState() => _TerminalState();
+  _TerminalState createState() => _TerminalState(ipaddr);
 }
 
 class _TerminalState extends State<Terminal> {
+  var ipaddr;
+  _TerminalState(this.ipaddr);
   var op = " ";
   var msgLine = " ";
   String commandName = " ";
@@ -50,7 +54,7 @@ class _TerminalState extends State<Terminal> {
                           onSubmitted: (x) async {
                             print("done");
                             var url =
-                                "http://54.160.88.233/cgi-bin/rmm.py?x=$commandName";
+                                "http://$ipaddr/cgi-bin/rmm.py?x=$commandName";
                             var result = await http.get(url);
                             var data = result.body;
                             setState(() {

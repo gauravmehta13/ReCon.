@@ -76,6 +76,13 @@ class _DockerState extends State<Docker> {
     output = response.body;
   }
 
+  listcontainers() async {
+    var url = 'http://$ipaddr/cgi-bin/rmm.py?x=docker ps –a';
+    var response = await http.get(url);
+    print(response.body);
+    output = response.body;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

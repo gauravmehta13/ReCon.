@@ -93,7 +93,9 @@ class _DashboardState extends State<Dashboard> {
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => Terminal()));
+                    builder: (BuildContext context) => Terminal(
+                          ipaddr: ipaddr,
+                        )));
               }),
           Divider(),
           new ListTile(
