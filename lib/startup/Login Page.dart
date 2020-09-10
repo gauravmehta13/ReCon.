@@ -123,17 +123,18 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   SizedBox(height: 40.0),
                   GestureDetector(
-                    onTap: () {
+                    onTap: () async {
                       try {
-                        _auth.signInWithEmailAndPassword(
+                        var userSignin = await _auth.signInWithEmailAndPassword(
                             email: email, password: password);
+                        print(userSignin);
+
+                        if (userSignin != null) {
+                          Navigator.pushNamed(context, "/Disclaimer");
+                        }
                       } catch (e) {
                         print(e);
                       }
-
-                      print(email);
-                      print(password);
-                      // Navigator.pushNamed(context, '/Disclaimer');
                     },
                     child: Container(
                       height: 40.0,

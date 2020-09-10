@@ -19,7 +19,7 @@ class _DashboardState extends State<Dashboard> {
   var op = " ";
   var msgLine = " ";
   String commandName = " ";
-  @override
+  var _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,6 +73,7 @@ class _DashboardState extends State<Dashboard> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: TextField(
+                    controller: _controller,
                     decoration: InputDecoration(
                       contentPadding:
                           const EdgeInsets.symmetric(horizontal: 40),
@@ -90,7 +91,9 @@ class _DashboardState extends State<Dashboard> {
                 ),
                 GestureDetector(
                   onTap: () async {
-                    var url = "http://$ipaddr/cgi-bin/rmm.py?x=$commandName";
+                    // var url = "http://$ipaddr/cgi-bin/rmm.py?x=$commandName";
+                    var url =
+                        "http://54.160.88.233/cgi-bin/rmm.py?x=$commandName";
                     var result = await http.get(url);
                     var data = result.body;
                     setState(() {
@@ -105,6 +108,7 @@ class _DashboardState extends State<Dashboard> {
                       backgroundColor: Colors.green,
                       textColor: Colors.white,
                     );
+                    _controller.clear();
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width / 3,
@@ -129,7 +133,7 @@ class _DashboardState extends State<Dashboard> {
                 SizedBox(
                   height: 40,
                 ),
-                /* Container(
+                Container(
                   child: Column(
                     children: <Widget>[
                       Text(
@@ -146,14 +150,13 @@ class _DashboardState extends State<Dashboard> {
                       Text(
                         '${op ?? "output will show up here"}',
                         style: TextStyle(
-                          decoration: BoxDecoration().borderRadius,
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
                         ),
                       )
                     ],
                   ),
-                )*/
+                )
               ],
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:RMM/Screens/Docker.dart';
 import 'package:RMM/Screens/Terminal.dart';
 import 'package:RMM/Startup/Splash Screen.dart';
 import 'package:RMM/startup/Login Page.dart';
@@ -29,9 +30,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
           scaffoldBackgroundColor: Colors.white,
         ),
-        initialRoute: '/splash',
+        initialRoute: '/docker',
         routes: <String, WidgetBuilder>{
           '/splash': (BuildContext context) => splash(),
+          '/docker': (BuildContext context) => Docker(),
           '/login': (BuildContext context) => new LoginPage(),
           '/Terminal': (BuildContext context) => new Terminal(),
           '/signup': (BuildContext context) => new SignupPage(),

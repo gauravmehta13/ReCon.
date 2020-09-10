@@ -7,13 +7,12 @@ class Terminal extends StatefulWidget {
 }
 
 class _TerminalState extends State<Terminal> {
+  var op = " ";
+  var msgLine = " ";
+  String commandName = " ";
+  var _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    TextEditingController _c;
-    var op = " ";
-    var msgLine = " ";
-    String commandName = " ";
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF1e1e1e),
@@ -34,15 +33,16 @@ class _TerminalState extends State<Terminal> {
                   children: <Widget>[
                     Text(
                       "user@terminal:~ ",
-                      style: TextStyle(color: Color(0xFF266de4)),
+                      style: TextStyle(fontSize: 15, color: Color(0xFF266de4)),
                     ),
                     Expanded(
                       child: TextField(
+                          controller: _controller,
                           autofocus: true,
                           showCursor: true,
                           cursorColor: Colors.white,
                           cursorWidth: 6,
-                          style: TextStyle(color: Colors.white, fontSize: 14),
+                          style: TextStyle(color: Colors.white, fontSize: 15),
                           decoration: InputDecoration.collapsed(hintText: ""),
                           onChanged: (x) {
                             commandName = x;
@@ -54,26 +54,33 @@ class _TerminalState extends State<Terminal> {
                             var result = await http.get(url);
                             var data = result.body;
                             setState(() {
+                              msgLine = "user@terminal:~ ";
                               op = data;
-                              data = op;
+
                               print(op);
                             });
                           }),
                     )
                   ],
                 ),
-                /* Container(
-                  width: 500,
-                  color: Colors.black,
-                  child: Text(
-                    'cmd : $op',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                    ),
+                Container(
+                  height: 15,
+                  child: Row(
+                    children: <Widget>[
+                      Text('$msgLine',
+                          style: TextStyle(
+                              fontSize: 15, color: Color(0xFF266de4))),
+                      Text(
+                        '$op',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )
+                    ],
                   ),
-                )*/
+                )
               ],
             ),
           ),
