@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-//import 'package:fluttertoast/fluttertoast.dart';
-
 import 'Output.dart';
 
 var imagename, tag, cName, cmd, nName, output;
@@ -66,11 +64,16 @@ dockerStop(cName) async {
 }
 
 class Docker extends StatefulWidget {
+  var ipaddr;
+  Docker({this.ipaddr});
   @override
-  _DockerState createState() => _DockerState();
+  _DockerState createState() => _DockerState(ipaddr);
 }
 
 class _DockerState extends State<Docker> {
+  var ipaddr;
+  _DockerState(this.ipaddr);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -136,6 +139,7 @@ class _DockerState extends State<Docker> {
                 RaisedButton(
                     child: Text('Execute'),
                     onPressed: () {
+                      print(ipaddr);
                       dockerPull(imagename, tag: tag);
                       /*Navigator.of(context).push(new MaterialPageRoute(
                           builder: (BuildContext context) => Docker_Output()));*/

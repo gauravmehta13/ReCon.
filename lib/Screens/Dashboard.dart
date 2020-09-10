@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
-import '../Drawer.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'Docker.dart';
 import 'Output.dart';
+import 'Terminal.dart';
 
 // ignore: must_be_immutable
 class Dashboard extends StatefulWidget {
@@ -47,7 +50,78 @@ class _DashboardState extends State<Dashboard> {
           )
         ],
       ),
-      drawer: DrawerList(),
+      drawer: Drawer(
+          child: Column(
+        children: <Widget>[
+          UserAccountsDrawerHeader(
+            /* accountEmail: new Text(
+            "Gaurav",
+            style: TextStyle(color: Colors.black),
+          ),
+          accountName: new Text(
+            "Welcome User",
+            style: TextStyle(fontWeight: FontWeight.w400, color: Colors.black),
+          ),
+          currentAccountPicture: new GestureDetector(
+            child: new CircleAvatar(
+              backgroundImage: new NetworkImage(
+                  'https://www.pngkit.com/png/detail/281-2812821_user-account-management-logo-user-icon-png.png'),
+            ),
+            onTap: () => Fluttertoast.showToast(
+                msg: "Your Profile",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                backgroundColor: Colors.yellowAccent,
+                textColor: Colors.black,
+                fontSize: 16.0),
+          ),*/
+            decoration: new BoxDecoration(
+                image: new DecorationImage(
+                    image: AssetImage('github logo.png'),
+                    fit: BoxFit.fitWidth)),
+          ),
+          ListTile(
+              title: new Text("Execute Commands"),
+              leading: FaIcon(FontAwesomeIcons.terminal),
+              onTap: () {
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => Dashboard()));
+              }),
+          new ListTile(
+              title: new Text("Terminal"),
+              leading: FaIcon(FontAwesomeIcons.terminal),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => Terminal()));
+              }),
+          Divider(),
+          new ListTile(
+              title: new Text("Docker"),
+              leading: FaIcon(FontAwesomeIcons.docker),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Docker(
+                              ipaddr: ipaddr,
+                            )));
+              }),
+          new Divider(),
+          Expanded(
+              child: Align(
+            alignment: Alignment.bottomCenter,
+            child: ListTile(
+                title: new Text("Setup"),
+                leading: FaIcon(FontAwesomeIcons.handsHelping),
+                onTap: () {
+                  launch(
+                      'https://thesocialcomment.com/blog/Executing-Commands-on-Cloud-VM-s-Remotely-using-Recon-?pid=5f53803737add53a21ad536c');
+                }),
+          )),
+        ],
+      )),
       body: Stack(
         children: [
           Align(
