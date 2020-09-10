@@ -54,7 +54,7 @@ class _TerminalState extends State<Terminal> {
                           onSubmitted: (x) async {
                             print("done");
                             var url =
-                                "http://$ipaddr/cgi-bin/rmm.py?x=$commandName";
+                                "http://54.160.88.233/cgi-bin/rmm.py?x=$commandName";
                             var result = await http.get(url);
                             var data = result.body;
                             setState(() {
@@ -68,8 +68,9 @@ class _TerminalState extends State<Terminal> {
                   ],
                 ),
                 Container(
-                  height: 15,
-                  child: Row(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text('$msgLine',
                           style: TextStyle(

@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.green,
           scaffoldBackgroundColor: Colors.white,
         ),
-        initialRoute: '/docker',
+        initialRoute: '/Terminal',
         routes: <String, WidgetBuilder>{
           '/splash': (BuildContext context) => splash(),
           '/docker': (BuildContext context) => Docker(),
