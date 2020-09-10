@@ -33,13 +33,14 @@ class _splashState extends State<splash> {
                 image: DecorationImage(
                     image: AssetImage('assets/recon.gif'), fit: BoxFit.cover)),
           ),
-          SizedBox(
-            height: 280,
+          Spacer(
+            flex: 2,
           ),
           CircularProgressIndicator(
             backgroundColor: Colors.green,
             valueColor: new AlwaysStoppedAnimation<Color>(Colors.black),
           ),
+          Spacer()
         ],
       ),
     ));

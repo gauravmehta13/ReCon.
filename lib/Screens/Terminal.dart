@@ -3,14 +3,17 @@ import 'package:http/http.dart' as http;
 
 class Terminal extends StatefulWidget {
   var ipaddr;
-  Terminal({this.ipaddr});
+  var username = "user";
+  Terminal({this.ipaddr, this.username});
   @override
-  _TerminalState createState() => _TerminalState(ipaddr);
+  _TerminalState createState() => _TerminalState(ipaddr, username);
 }
 
 class _TerminalState extends State<Terminal> {
   var ipaddr;
-  _TerminalState(this.ipaddr);
+  var username = "user";
+
+  _TerminalState(this.ipaddr, this.username);
   var op = " ";
   var msgLine = " ";
   String commandName = " ";
@@ -58,7 +61,7 @@ class _TerminalState extends State<Terminal> {
                             var result = await http.get(url);
                             var data = result.body;
                             setState(() {
-                              msgLine = "user@terminal:~ ";
+                              msgLine = "$username@terminal:~ ";
                               op = data;
 
                               print(op);

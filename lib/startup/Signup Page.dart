@@ -17,6 +17,7 @@ class _SignupPageState extends State<SignupPage> {
         body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
             Widget>[
           Container(
+              height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(color: Color(0xFFf2f0f2)),
               child: Column(children: <Widget>[
                 SizedBox(
@@ -34,7 +35,7 @@ class _SignupPageState extends State<SignupPage> {
                   height: 40,
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 35.0, left: 25.0, right: 25.0),
+                  padding: EdgeInsets.only(top: 0, left: 25.0, right: 25.0),
                   alignment: Alignment.centerLeft,
                   child: Text(
                     'Signup',
@@ -47,6 +48,17 @@ class _SignupPageState extends State<SignupPage> {
                         EdgeInsets.only(top: 35.0, left: 25.0, right: 25.0),
                     child: Column(
                       children: <Widget>[
+                        TextField(
+                          decoration: InputDecoration(
+                              labelText: 'NAME ',
+                              labelStyle: TextStyle(
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.grey),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.green))),
+                        ),
+                        SizedBox(height: 10.0),
                         TextField(
                           onChanged: (x) {
                             setState(() {
@@ -78,17 +90,6 @@ class _SignupPageState extends State<SignupPage> {
                               focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(color: Colors.green))),
                           obscureText: true,
-                        ),
-                        SizedBox(height: 10.0),
-                        TextField(
-                          decoration: InputDecoration(
-                              labelText: 'NICK NAME ',
-                              labelStyle: TextStyle(
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey),
-                              focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.green))),
                         ),
                         SizedBox(height: 50.0),
                         GestureDetector(
