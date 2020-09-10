@@ -10,6 +10,8 @@ class _SignupPageState extends State<SignupPage> {
   var authc = FirebaseAuth.instance;
   var email;
   var password;
+  var username;
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -38,7 +40,7 @@ class _SignupPageState extends State<SignupPage> {
                   padding: EdgeInsets.only(top: 0, left: 25.0, right: 25.0),
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Signup',
+                    'SignUp',
                     style:
                         TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
                   ),
@@ -49,6 +51,11 @@ class _SignupPageState extends State<SignupPage> {
                     child: Column(
                       children: <Widget>[
                         TextField(
+                          onChanged: (x) {
+                            setState(() {
+                              username = x;
+                            });
+                          },
                           decoration: InputDecoration(
                               labelText: 'NAME ',
                               labelStyle: TextStyle(
