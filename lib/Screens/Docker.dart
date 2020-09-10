@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'Output.dart';
 
@@ -98,7 +99,7 @@ class _DockerState extends State<Docker> {
           //Pull Docker Image
           ExpansionTile(
             title: Text('Pull Docker Image'),
-            leading: Icon(Icons.accessibility),
+            leading: FaIcon(FontAwesomeIcons.docker),
             children: <Widget>[
               Column(children: <Widget>[
                 SizedBox(
@@ -157,7 +158,7 @@ class _DockerState extends State<Docker> {
           //Run Docker Container
           ExpansionTile(
             title: Text('Run Docker Container'),
-            leading: Icon(Icons.accessibility),
+            leading: FaIcon(FontAwesomeIcons.docker),
             children: <Widget>[
               Column(children: <Widget>[
                 SizedBox(
@@ -219,7 +220,7 @@ class _DockerState extends State<Docker> {
           //Delete Docker Image
           ExpansionTile(
             title: Text('Delete Docker Image'),
-            leading: Icon(Icons.accessibility),
+            leading: FaIcon(FontAwesomeIcons.docker),
             children: <Widget>[
               Column(children: <Widget>[
                 SizedBox(
@@ -266,7 +267,7 @@ class _DockerState extends State<Docker> {
           //Delete Docker Container
           ExpansionTile(
             title: Text('Delete Docker Container'),
-            leading: Icon(Icons.accessibility),
+            leading: FaIcon(FontAwesomeIcons.docker),
             children: <Widget>[
               Column(children: <Widget>[
                 SizedBox(
@@ -298,7 +299,7 @@ class _DockerState extends State<Docker> {
           //Execute Command in Container
           ExpansionTile(
             title: Text('Execute Command in Container'),
-            leading: Icon(Icons.accessibility),
+            leading: FaIcon(FontAwesomeIcons.docker),
             children: <Widget>[
               Column(children: <Widget>[
                 SizedBox(
@@ -350,7 +351,7 @@ class _DockerState extends State<Docker> {
           //Docker Commit
           ExpansionTile(
             title: Text('Convert Container to Image'),
-            leading: Icon(Icons.accessibility),
+            leading: FaIcon(FontAwesomeIcons.docker),
             children: <Widget>[
               Column(children: <Widget>[
                 SizedBox(
@@ -416,7 +417,7 @@ class _DockerState extends State<Docker> {
           ),
           ExpansionTile(
             title: Text('Start A container'),
-            leading: Icon(Icons.accessibility),
+            leading: FaIcon(FontAwesomeIcons.docker),
             children: <Widget>[
               Column(children: <Widget>[
                 SizedBox(
@@ -455,7 +456,7 @@ class _DockerState extends State<Docker> {
           ),
           ExpansionTile(
             title: Text('Stop A container'),
-            leading: Icon(Icons.accessibility),
+            leading: FaIcon(FontAwesomeIcons.docker),
             children: <Widget>[
               Column(children: <Widget>[
                 SizedBox(
