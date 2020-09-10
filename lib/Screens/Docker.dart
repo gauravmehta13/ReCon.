@@ -3,66 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'Output.dart';
 
-var imagename, tag, cName, cmd, nName, output;
-
-dockerPull(imagename, {tag = 'latest'}) async {
-  var url =
-      'http://54.165.46.140/cgi-bin/dockerimagepull.py?x=$imagename&y=$tag';
-  var response = await http.get(url);
-  print(response.body);
-  output = response.body;
-}
-
-dokckerRun(imagename, tag, cName) async {
-  var url =
-      'http://54.165.46.140/cgi-bin/dockerrun.py?x=$imagename&y=$tag&z=$cName';
-  var response = await http.get(url);
-  print(response.body);
-  output = response.body;
-}
-
-imageDel(imagename, tag) async {
-  var url = 'http://54.165.46.140/cgi-bin/imagedel.py?x=$imagename&y=$tag';
-  var response = await http.get(url);
-  print(response.body);
-  output = response.body;
-}
-
-containerDel(cName) async {
-  var url = 'http://35.168.3.119/cgi-bin/containerdel.py?x=$cName';
-  var response = await http.get(url);
-  print(response.body);
-  output = response.body;
-}
-
-dockerExec(cName, cmd) async {
-  var url = 'http://35.168.3.119/cgi-bin/dockerexec.py?x=$cName&y=$cmd';
-  var response = await http.get(url);
-  print(response.body);
-  output = response.body;
-}
-
-dockerCommit(cName, nName, tag) async {
-  var url =
-      'http://35.168.3.119/cgi-bin/dockercommit.py?x=$cName&y=$nName&z=$tag';
-  var response = await http.get(url);
-  print(response.body);
-  output = response.body;
-}
-
-dockerStart(cName) async {
-  var url = 'http://35.168.3.119/cgi-bin/dockerstart.py?x=$cName';
-  var response = await http.get(url);
-  print(response.body);
-  output = response.body;
-}
-
-dockerStop(cName) async {
-  var url = 'http://35.168.3.119/cgi-bin/dockerstop.py?x=$cName';
-  var response = await http.get(url);
-  print(response.body);
-  output = response.body;
-}
+var imagename, cName, cmd, nName, output;
+var tag = "latest";
 
 class Docker extends StatefulWidget {
   var ipaddr;
@@ -74,6 +16,65 @@ class Docker extends StatefulWidget {
 class _DockerState extends State<Docker> {
   var ipaddr;
   _DockerState(this.ipaddr);
+  dockerPull(imagename, {tag = 'latest'}) async {
+    var url = 'http://$ipaddr/cgi-bin/rmm.py?x=docker pull$imagename:$tag';
+    var response = await http.get(url);
+    print(response.body);
+    output = response.body;
+  }
+
+  dokckerRun(imagename, tag, cName) async {
+    var url =
+        'http://$ipaddr/cgi-bin/rmm.py?x=docker container run -dit --name $cName $imagename:$tag';
+    var response = await http.get(url);
+    print(response.body);
+    output = response.body;
+  }
+
+  imageDel(imagename, tag) async {
+    var url =
+        'http://$ipaddr/cgi-bin/rmm.py?x=docker image rm -f $imagename:$tag';
+    var response = await http.get(url);
+    print(response.body);
+    output = response.body;
+  }
+
+  containerDel(cName) async {
+    var url = 'http://$ipaddr/cgi-bin/rmm.py?x=docker container rm -f $cName';
+    var response = await http.get(url);
+    print(response.body);
+    output = response.body;
+  }
+
+  dockerExec(cName, cmd) async {
+    var url =
+        'http://$ipaddr/cgi-bin/rmm.py?x=sudo docker container exec $cName $cmd';
+    var response = await http.get(url);
+    print(response.body);
+    output = response.body;
+  }
+
+  dockerCommit(cName, nName, tag) async {
+    var url =
+        'http://$ipaddr/cgi-bin/rmm.py?x=docker commit $cName $nName:$tag';
+    var response = await http.get(url);
+    print(response.body);
+    output = response.body;
+  }
+
+  dockerStart(cName) async {
+    var url = 'http://$ipaddr/cgi-bin/rmm.py?x=docker container start $cName';
+    var response = await http.get(url);
+    print(response.body);
+    output = response.body;
+  }
+
+  dockerStop(cName) async {
+    var url = 'http://$ipaddr/cgi-bin/rmm.py?x=docker container stop $cName';
+    var response = await http.get(url);
+    print(response.body);
+    output = response.body;
+  }
 
   @override
   Widget build(BuildContext context) {
