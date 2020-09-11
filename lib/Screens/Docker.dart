@@ -101,407 +101,426 @@ class _DockerState extends State<Docker> {
             ),
           ],
         ),
-        body: SingleChildScrollView(
-            child: Column(children: <Widget>[
-          SizedBox(height: 30),
-          //Pull Docker Image
-          ExpansionTile(
-            title: Text('Pull Docker Image'),
-            leading: FaIcon(FontAwesomeIcons.docker),
-            children: <Widget>[
-              Column(children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 40,
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Image Name",
-                      border: OutlineInputBorder(),
+        body: Align(
+          alignment: Alignment.topCenter,
+          child: Container(
+            //    color: Colors.blue,
+            width: MediaQuery.of(context).size.width * 0.90,
+            child: SingleChildScrollView(
+                child: Column(children: <Widget>[
+              SizedBox(height: 30),
+              //Pull Docker Image
+              ExpansionTile(
+                title: Text('Pull Docker Image'),
+                leading: FaIcon(FontAwesomeIcons.docker),
+                children: <Widget>[
+                  Column(children: <Widget>[
+                    SizedBox(
+                      height: 10,
                     ),
-                    onChanged: (x) {
-                      imagename = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Tag {Type latest if not sure}",
-                      border: OutlineInputBorder(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 40,
+                      ),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter Image Name",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          imagename = x;
+                        },
+                      ),
                     ),
-                    onChanged: (x) {
-                      tag = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                RaisedButton(
-                    child: Text('Execute'),
-                    onPressed: () {
-                      print(ipaddr);
-                      dockerPull(imagename, tag: tag);
-                      /*Navigator.of(context).push(new MaterialPageRoute(
-                          builder: (BuildContext context) => Docker_Output()));*/
-                      /* Fluttertoast.showToast(
-                          msg: data,
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.BOTTOM,
-                          backgroundColor: Colors.yellowAccent,
-                          textColor: Colors.black,
-                          fontSize: 16.0);*/
-                    })
-              ])
-            ],
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter Tag {Type latest if not sure}",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          tag = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    RaisedButton(
+                        child: Text('Execute'),
+                        onPressed: () {
+                          print(ipaddr);
+                          dockerPull(imagename, tag: tag);
+                          /*Navigator.of(context).push(new MaterialPageRoute(
+                              builder: (BuildContext context) => Docker_Output()));*/
+                          /* Fluttertoast.showToast(
+                              msg: data,
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              backgroundColor: Colors.yellowAccent,
+                              textColor: Colors.black,
+                              fontSize: 16.0);*/
+                        })
+                  ])
+                ],
+              ),
+              SizedBox(height: 30),
+              //Run Docker Container
+              ExpansionTile(
+                title: Text('Run Docker Container'),
+                leading: FaIcon(FontAwesomeIcons.docker),
+                children: <Widget>[
+                  Column(children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter Image Name",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          imagename = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter Tag {Type lastest if not sure}",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          tag = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter Preffered Container Name",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          cName = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    RaisedButton(
+                        child: Text('Execute'),
+                        onPressed: () {
+                          dokckerRun(imagename, tag, cName);
+                        })
+                  ])
+                ],
+              ),
+              SizedBox(height: 30),
+              //Delete Docker Image
+              ExpansionTile(
+                title: Text('Delete Docker Image'),
+                leading: FaIcon(FontAwesomeIcons.docker),
+                children: <Widget>[
+                  Column(children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter the Image You Want to Delete",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          imagename = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter Tag {Type lastest if not sure}",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          tag = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    RaisedButton(
+                        child: Text('Delete'),
+                        onPressed: () {
+                          imageDel(imagename, tag);
+                        })
+                  ])
+                ],
+              ),
+              SizedBox(height: 30),
+              //Delete Docker Container
+              ExpansionTile(
+                title: Text('Delete Docker Container'),
+                leading: FaIcon(FontAwesomeIcons.docker),
+                children: <Widget>[
+                  Column(children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Container Name To delete",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          cName = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    RaisedButton(
+                        child: Text('Delete'),
+                        onPressed: () {
+                          containerDel(cName);
+                        })
+                  ])
+                ],
+              ),
+              SizedBox(height: 30),
+              //Execute Command in Container
+              ExpansionTile(
+                title: Text('Execute Command in Container'),
+                leading: FaIcon(FontAwesomeIcons.docker),
+                children: <Widget>[
+                  Column(children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    RaisedButton(
+                        child: Text('List Running Containers'),
+                        onPressed: () {}),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Container Name",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          cName = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter The Command",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          cmd = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    RaisedButton(
+                        child: Text('Execute'),
+                        onPressed: () {
+                          dockerExec(cName, cmd);
+                        })
+                  ])
+                ],
+              ),
+              SizedBox(height: 30),
+              //Docker Commit
+              ExpansionTile(
+                title: Text('Convert Container to Image'),
+                leading: FaIcon(FontAwesomeIcons.docker),
+                children: <Widget>[
+                  Column(children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    RaisedButton(
+                        child: Text('List Running Containers'),
+                        onPressed: () {}),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter Container Name",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          cName = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Name the New Image",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          nName = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Tag name",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          tag = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    RaisedButton(
+                        child: Text('Execute'),
+                        onPressed: () {
+                          dockerCommit(cName, nName, tag);
+                        })
+                  ])
+                ],
+              ),
+              SizedBox(height: 30),
+              ExpansionTile(
+                title: Text('Start A container'),
+                leading: FaIcon(FontAwesomeIcons.docker),
+                children: <Widget>[
+                  Column(children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    RaisedButton(
+                        child: Text('List Running Containers'),
+                        onPressed: () {}),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter Container Name",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          cName = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    RaisedButton(
+                        child: Text('Execute'),
+                        onPressed: () {
+                          dockerStart(cName);
+                        })
+                  ])
+                ],
+              ),
+              SizedBox(height: 30),
+              ExpansionTile(
+                title: Text('Stop A container'),
+                leading: FaIcon(FontAwesomeIcons.docker),
+                children: <Widget>[
+                  Column(children: <Widget>[
+                    SizedBox(
+                      height: 10,
+                    ),
+                    RaisedButton(
+                        child: Text('List Running Containers'),
+                        onPressed: () {}),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: "Enter Container Name",
+                          border: OutlineInputBorder(),
+                        ),
+                        onChanged: (x) {
+                          cName = x;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    RaisedButton(
+                        child: Text('Execute'),
+                        onPressed: () {
+                          dockerStop(cName);
+                        })
+                  ])
+                ],
+              ),
+              SizedBox(height: 30),
+            ])),
           ),
-          //Run Docker Container
-          ExpansionTile(
-            title: Text('Run Docker Container'),
-            leading: FaIcon(FontAwesomeIcons.docker),
-            children: <Widget>[
-              Column(children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Image Name",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      imagename = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Tag {Type lastest if not sure}",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      tag = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Preffered Container Name",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      cName = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                RaisedButton(
-                    child: Text('Execute'),
-                    onPressed: () {
-                      dokckerRun(imagename, tag, cName);
-                    })
-              ])
-            ],
-          ),
-          //Delete Docker Image
-          ExpansionTile(
-            title: Text('Delete Docker Image'),
-            leading: FaIcon(FontAwesomeIcons.docker),
-            children: <Widget>[
-              Column(children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter the Image You Want to Delete",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      imagename = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Tag {Type lastest if not sure}",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      tag = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                RaisedButton(
-                    child: Text('Delete'),
-                    onPressed: () {
-                      imageDel(imagename, tag);
-                    })
-              ])
-            ],
-          ),
-          //Delete Docker Container
-          ExpansionTile(
-            title: Text('Delete Docker Container'),
-            leading: FaIcon(FontAwesomeIcons.docker),
-            children: <Widget>[
-              Column(children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Container Name To delete",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      cName = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                RaisedButton(
-                    child: Text('Delete'),
-                    onPressed: () {
-                      containerDel(cName);
-                    })
-              ])
-            ],
-          ),
-          //Execute Command in Container
-          ExpansionTile(
-            title: Text('Execute Command in Container'),
-            leading: FaIcon(FontAwesomeIcons.docker),
-            children: <Widget>[
-              Column(children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
-                RaisedButton(
-                    child: Text('List Running Containers'), onPressed: () {}),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Container Name",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      cName = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter The Command",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      cmd = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                RaisedButton(
-                    child: Text('Execute'),
-                    onPressed: () {
-                      dockerExec(cName, cmd);
-                    })
-              ])
-            ],
-          ),
-          //Docker Commit
-          ExpansionTile(
-            title: Text('Convert Container to Image'),
-            leading: FaIcon(FontAwesomeIcons.docker),
-            children: <Widget>[
-              Column(children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
-                RaisedButton(
-                    child: Text('List Running Containers'), onPressed: () {}),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Container Name",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      cName = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Name the New Image",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      nName = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Tag name",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      tag = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                RaisedButton(
-                    child: Text('Execute'),
-                    onPressed: () {
-                      dockerCommit(cName, nName, tag);
-                    })
-              ])
-            ],
-          ),
-          ExpansionTile(
-            title: Text('Start A container'),
-            leading: FaIcon(FontAwesomeIcons.docker),
-            children: <Widget>[
-              Column(children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
-                RaisedButton(
-                    child: Text('List Running Containers'), onPressed: () {}),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Container Name",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      cName = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                RaisedButton(
-                    child: Text('Execute'),
-                    onPressed: () {
-                      dockerStart(cName);
-                    })
-              ])
-            ],
-          ),
-          ExpansionTile(
-            title: Text('Stop A container'),
-            leading: FaIcon(FontAwesomeIcons.docker),
-            children: <Widget>[
-              Column(children: <Widget>[
-                SizedBox(
-                  height: 10,
-                ),
-                RaisedButton(
-                    child: Text('List Running Containers'), onPressed: () {}),
-                SizedBox(
-                  height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Enter Container Name",
-                      border: OutlineInputBorder(),
-                    ),
-                    onChanged: (x) {
-                      cName = x;
-                    },
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                RaisedButton(
-                    child: Text('Execute'),
-                    onPressed: () {
-                      dockerStop(cName);
-                    })
-              ])
-            ],
-          )
-        ]))
+        )
         /*Container(
         width: double.infinity,
         padding: EdgeInsets.all(10),
