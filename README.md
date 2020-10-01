@@ -14,5 +14,17 @@
  <p align="center">
   <img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png" img width="5000" height="5" />
 </p>
-<h2>Features</h2>
  
+
+<p align="center">
+  <a href="
+
+https://play.google.com/store/apps/details?id=com.gauravmehta13.RMM&hl=en_IN">
+         <img alt="Qries" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+              img width="325" height="125"
+        >
+      </a></p>
+
+
+
+
