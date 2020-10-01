@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/gauravmehta13/ReCon./master/github%20logo.png?token=AMMWUTFGB232RAVNQ3WVUQS7LN46O" alt="Logo"width="600" height="300"  />
+  <img src="https://raw.githubusercontent.com/gauravmehta13/ReCon./master/github%20logo.png?token=AMMWUTFGB232RAVNQ3WVUQS7LN46O" />
 </p>
 <p align="center">
   <sub>App to remotely manage and monitor your VM's<sub>
