@@ -6,7 +6,7 @@
   <sub>As the coronavirus (aka Covid-19) continues to spread around the world, many companies have now introduced policies to accommodate remote working while also helping to limit the impact on productivity.<sub>
 </p>
  
-<p align="center"> <img src="4.png" width="200">  <img src="1.png" width="200">  <img src="2.png" width="200"> <img src="3.png" width="200"> </p>
+<p align="center"> <img src="4.jpg" width="200">  <img src="1.jpg" width="200">  <img src="2.jpg" width="200"> <img src="3.jpg" width="200"> </p>
 
 <p align="center">
   <a href="https://play.google.com/store/apps/details?id=com.gauravmehta13.RMM&hl">
